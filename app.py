@@ -10,14 +10,28 @@ keypad = {
 
 }
 
-def encrypt_message(message):    
+def encrypt_message(message):     
 
-    message = input("Enter a message: ")
     encrypted_message = ""
 
-    for letter in message:
-        if letter in keypad:
+    for letter in message: 
+        if letter.upper() in keypad:
             encrypted_message += keypad[letter.upper()]
         else:
             print(f"Error: the character '{letter}' is not on the keypad.")
+    return encrypted_message
+
+while True:
+    choice = input("1. Encrypt\n2. Exit\nChoose an option: ")
+    if choice == '1':
+        user_text = input("Enter a message: ")
+        encrypted_result = encrypt_message(user_text)
+        print("Encrypted message:", encrypted_result)
+    elif choice == '2':
+        break 
+
+
+
+#def decrypt_message(code):
+
 
