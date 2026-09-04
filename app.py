@@ -17,7 +17,7 @@ def encrypt_message(message):
 
     for letter in message:
         if letter in keypad:
-            encrypted_message += keypad[letter]
+            encrypted_message += keypad[letter.upper()]
         else:
             print(f"Error: the character '{letter}' is not on the keypad.")
 
