@@ -10,13 +10,14 @@ keypad = {
 
 }
 
-message = input("Enter a message: ")
-encrypted_message = ""
+def encrypt_message(message):    
 
-for letter in message:
-    if letter in keypad:
-        encrypted_message += keypad[letter]
-    else:
-        print(f"Error: the character '{letter}' is not on the keypad.")
+    message = input("Enter a message: ")
+    encrypted_message = ""
 
-    def encrypt_message(message):    
+    for letter in message:
+        if letter in keypad:
+            encrypted_message += keypad[letter]
+        else:
+            print(f"Error: the character '{letter}' is not on the keypad.")
+
