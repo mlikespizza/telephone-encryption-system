@@ -1,12 +1,12 @@
 keypad = {
-    'A': '2', 'B': '2', 'C': '2',
-    'D': '3', 'E': '3', 'F': '3',
-    'G': '4', 'H': '4', 'I': '4',
-    'J': '5', 'K': '5', 'L': '5',
-    'M': '6', 'N': '6', 'O': '6',
-    'P': '7', 'Q': '7', 'R': '7', 'S': '7',
-    'T': '8', 'U': '8', 'V': '8',
-    'W': '9', 'X': '9', 'Y': '9', 'Z': '9'
+    'A': '2', 'B': '22', 'C': '222',
+    'D': '3', 'E': '33', 'F': '333',
+    'G': '4', 'H': '44', 'I': '444',
+    'J': '5', 'K': '55', 'L': '555',
+    'M': '6', 'N': '66', 'O': '666',
+    'P': '7', 'Q': '77', 'R': '777', 'S': '7777',
+    'T': '8', 'U': '88', 'V': '888',
+    'W': '9', 'X': '99', 'Y': '999', 'Z': '9999'
 
 }
 
@@ -23,23 +23,31 @@ def encrypt_message(message):
 
 
 reverse_keypad = {
-    '2': ['A', 'B', 'C'],
-    '3': ['D', 'E', 'F'],
-    '4': ['G', 'H', 'I'],
-    '5': ['J', 'K', 'L'],
-    '6': ['M', 'N', 'O'],
-    '7': ['P', 'Q', 'R', 'S'],
-    '8': ['T', 'U', 'V'],
-    '9': ['W', 'X', 'Y', 'Z']
+    '2': 'A', '22' : 'B', '222': 'C',
+    '3': 'D', '33': 'E', '333': 'F',
+    '4': 'G', '44': 'H', '444': 'I',
+    '5': 'J', '55': 'K', '555': 'L',
+    '6': 'M', '66': 'N', '666': 'O',
+    '7': 'P', '77': 'Q', '777': 'R', '7777': 'S',
+    '8': 'T', '88' : 'U', '888' : 'V',
+    '9': 'W', '99': 'X', '999': 'Y', '9999': 'Z'
 }
 
 def decrypt_message(code):
     decrypted_message = ""
-    for number in code: 
-        if number in reverse_keypad:
-            decrypted_message += reverse_keypad[number][0]
+
+    i = 0
+    while i < len(code):
+        set_of_numbers = code[i]
+        while i + 1 < len(code) and code[i + 1] == code[i]:
+            set_of_numbers += code[i + 1]
+            i += 1
+        i += 1
+
+        if set_of_numbers in reverse_keypad:
+            decrypted_message += reverse_keypad[set_of_numbers]
         else:
-            print(f"Error: the number '{number}' is not on the keypad.")
+            print(f"Error: the number '{set_of_numbers}' is not on the keypad.")
     return decrypted_message     
 
 
